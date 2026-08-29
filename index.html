@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SpeakWorld - Learn Languages</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            color: #172554;
+            background: #f8fafc;
+            line-height: 1.6;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        nav {
+            height: 75px;
+            background: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 6%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+            color: #0f4c81;
+        }
+
+        .logo span {
+            color: #fbbf24;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #172554;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #2563eb;
+        }
+
+        .nav-btn {
+            background: #fbbf24;
+            color: #111827 !important;
+            padding: 10px 22px;
+            border-radius: 25px;
+            font-weight: bold !important;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            min-height: 520px;
+            padding: 80px 7%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: white;
+            background:
+                linear-gradient(120deg, #062c75, #0757b8, #7e22ce);
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            font-size: 55px;
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #facc15;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            color: #e0f2fe;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .yellow-btn {
+            background: #facc15;
+            color: #111827;
+        }
+
+        .outline-btn {
+            border: 2px solid white;
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .world {
+            font-size: 180px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        /* ================= GENERAL ================= */
+
+        section {
+            padding: 70px 6%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 45px;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 55px;
+            height: 4px;
+            background: #facc15;
+            margin: 10px auto;
+            border-radius: 5px;
+        }
+
+        /* ================= ABOUT ================= */
+
+        .about {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            background: white;
+        }
+
+        .about-image {
+            width: 45%;
+            border-radius: 20px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h2 {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .about-text p {
+            margin-bottom: 12px;
+            color: #475569;
+        }
+
+        /* ================= LANGUAGE CARDS ================= */
+
+        .languages {
+            background: #f8fafc;
+        }
+
+        .language-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+        }
+
+        .language-card {
+            background: white;
+            border-radius: 18px;
+            overflow: hidden;
+            text-align: center;
+            padding-bottom: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: 0.3s;
+        }
+
+        .language-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .language-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .flag {
+            font-size: 40px;
+            margin-top: -25px;
+            position: relative;
+        }
+
+        .language-card h3 {
+            font-size: 23px;
+            margin: 5px;
+        }
+
+        .language-card p {
+            padding: 0 15px;
+            color: #64748b;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .learn-btn {
+            display: inline-block;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            padding: 9px 22px;
+            border-radius: 20px;
+        }
+
+        /* ================= HOW TO LEARN ================= */
+
+        .steps {
+            background: #eaf5ff;
+        }
+
+        .step-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 15px;
+        }
+
+        .step {
+            background: white;
+            padding: 25px 12px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+        }
+
+        .step-icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .step h3 {
+            font-size: 17px;
+            margin-bottom: 8px;
+        }
+
+        .step p {
+            font-size: 13px;
+            color: #64748b;
+        }
+
+        /* ================= TIPS ================= */
+
+        .tips {
+            background: white;
+        }
+
+        .tip-container {
+            max-width: 900px;
+            margin: auto;
+            background: linear-gradient(120deg, #dbeafe, #f3e8ff);
+            padding: 35px;
+            border-radius: 20px;
+        }
+
+        .tip-container ul {
+            columns: 2;
+            list-style: none;
+        }
+
+        .tip-container li {
+            margin: 12px;
+        }
+
+        .tip-container li::before {
+            content: "✓";
+            color: #16a34a;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        /* ================= BENEFITS ================= */
+
+        .benefits {
+            background: linear-gradient(120deg, #0757c9, #7e22ce);
+            color: white;
+        }
+
+        .benefit-container {
+            max-width: 1100px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .benefit-container h2 {
+            font-size: 35px;
+            margin-bottom: 20px;
+        }
+
+        .benefit-container ul {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .benefit-container li {
+            margin: 8px 0;
+        }
+
+        .benefit-container li::before {
+            content: "✓";
+            background: #facc15;
+            color: #111827;
+            border-radius: 50%;
+            padding: 1px 5px;
+            margin-right: 10px;
+        }
+
+        .benefit-image {
+            font-size: 150px;
+        }
+
+        /* ================= CONTACT ================= */
+
+        .contact {
+            background: #f8fafc;
+        }
+
+        .contact-form {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+        }
+
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 15px;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            font-size: 15px;
+            outline: none;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #2563eb;
+        }
+
+        textarea {
+            height: 130px;
+            resize: none;
+        }
+
+        .submit-btn {
+            border: none;
+            background: #2563eb;
+            color: white;
+            padding: 13px 30px;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #061633;
+            color: white;
+            padding: 55px 6% 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 2fr;
+            gap: 40px;
+        }
+
+        footer h3 {
+            margin-bottom: 15px;
+        }
+
+        footer p,
+        footer a {
+            color: #cbd5e1;
+            text-decoration: none;
+            display: block;
+            margin: 6px 0;
+        }
+
+        footer a:hover {
+            color: #facc15;
+        }
+
+        .subscribe {
+            display: flex;
+        }
+
+        .subscribe input {
+            margin: 0;
+            border-radius: 8px 0 0 8px;
+        }
+
+        .subscribe button {
+            border: none;
+            background: #7c3aed;
+            color: white;
+            padding: 0 18px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .copyright {
+            border-top: 1px solid #334155;
+            margin-top: 35px;
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            color: #94a3b8;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 1000px) {
+
+            .language-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .step-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero {
+                text-align: center;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .world {
+                display: none;
+            }
+
+            .about {
+                flex-direction: column;
+            }
+
+            .about-image {
+                width: 100%;
+            }
+
+            .benefit-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 700px) {
+
+            nav {
+                padding: 0 20px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 60px 20px;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .language-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .step-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tip-container ul {
+                columns: 1;
+            }
+
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .copyright {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav>
+
+    <div class="logo">
+        🌐 Speak<span>World</span>
+    </div>
+
+    <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#languages">Languages</a></li>
+        <li><a href="#learn">How to Learn</a></li>
+        <li><a href="#tips">Tips</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a class="nav-btn" href="#languages">Start Learning</a></li>
+    </ul>
+
+</nav>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <h1>
+            Speak Other Country
+            <span>Languages</span>
+        </h1>
+
+        <p>
+            Learn new languages, explore new cultures
+            and connect with people around the world.
+            Start your language journey today!
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="#languages" class="btn yellow-btn">
+                Start Learning →
+            </a>
+
+            <a href="#languages" class="btn outline-btn">
+                Explore Languages
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="world">
+        🌍
+    </div>
+
+</section>
+
+
+<!-- ================= ABOUT ================= -->
+
+<section class="about" id="about">
+
+    <img
+        class="about-image"
+        src="https://images.unsplash.com/photo-1521295121783-8a321d551ad2?auto=format&fit=crop&w=900&q=80"
+        alt="World globe and books"
+    >
+
+    <div class="about-text">
+
+        <h2>About Language Learning</h2>
+
+        <p>
+            Learning another country's language helps us
+            communicate with people from around the world.
+        </p>
+
+        <p>
+            It also helps us understand different cultures,
+            traditions and lifestyles.
+        </p>
+
+        <p>
+            You do not need to learn everything in one day.
+            Start with simple words and sentences.
+        </p>
+
+        <p>
+            Practice speaking, listening, reading and writing
+            every day.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ================= LANGUAGES ================= -->
+
+<section class="languages" id="languages">
+
+    <h2 class="section-title">
+        Popular Languages
+    </h2>
+
+    <div class="language-grid">
+
+
+        <!-- ENGLISH -->
+
+        <div class="language-card">
+
+            <img
+                src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=600&q=80"
+                alt="London"
+            >
+
+            <div class="flag">🇬🇧</div>
+
+            <h3>English</h3>
+
+            <p>
+                One of the most widely spoken languages
+                in the world.
+            </p>
+
+            <a href="#" class="learn-btn">
+                Learn More
+            </a>
+
+        </div>
+
+
+        <!-- ARABIC -->
+
+        <div class="language-card">
+
+            <img
+                src="https://images.unsplash.com/photo-1565552645632-d725f8bfc19a?auto=format&fit=crop&w=600&q=80"
+                alt="Arabian mosque"
+            >
+
+            <div class="flag">🇸🇦</div>
+
+            <h3>Arabic</h3>
+
+            <p>
+                Widely spoken in many Arab countries.
+            </p>
+
+            <a href="#" class="learn-btn">
+                Learn More
+            </a>
+
+        </div>
+
+
+        <!-- FRENCH -->
+
+        <div class="language-card">
+
+            <img
+                src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=600&q=80"
+                alt="Paris Eiffel Tower"
+            >
+
+            <div class="flag">🇫🇷</div>
+
+            <h3>French</h3>
+
+            <p>
+                A beautiful language spoken in France
+                and many countries.
+            </p>
+
+            <a href="#" class="learn-btn">
+                Learn More
+            </a>
+
+        </div>
+
+
+        <!-- SPANISH -->
+
+        <div class="language-card">
+
+            <img
+                src="https://images.unsplash.com/photo-1539037116277-4db20889f2d4?auto=format&fit=crop&w=600&q=80"
+                alt="Spain"
+            >
+
+            <div class="flag">🇪🇸</div>
+
+            <h3>Spanish</h3>
+
+            <p>
+                Spoken in Spain and many countries
+                in Latin America.
+            </p>
+
+            <a href="#" class="learn-btn">
+                Learn More
+            </a>
+
+        </div>
+
+
+        <!-- CHINESE -->
+
+        <div class="language-card">
+
+            <img
+                src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?auto=format&fit=crop&w=600&q=80"
+                alt="China"
+            >
+
+            <div class="flag">🇨🇳</div>
+
+            <h3>Chinese</h3>
+
+            <p>
+                One of the most widely spoken languages
+                in the world.
+            </p>
+
+            <a href="#" class="learn-btn">
+                Learn More
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= HOW TO LEARN ================= -->
+
+<section class="steps" id="learn">
+
+    <h2 class="section-title">
+        How to Learn a New Language
+    </h2>
+
+    <div class="step-grid">
+
+        <div class="step">
+            <div class="step-icon">📖</div>
+            <h3>1. Learn Basics</h3>
+            <p>Start with basic words and phrases.</p>
+        </div>
+
+        <div class="step">
+            <div class="step-icon">📅</div>
+            <h3>2. Practice Daily</h3>
+            <p>Practice every day for 15–30 minutes.</p>
+        </div>
+
+        <div class="step">
+            <div class="step-icon">🎧</div>
+            <h3>3. Listen</h3>
+            <p>Listen to native speakers.</p>
+        </div>
+
+        <div class="step">
+            <div class="step-icon">🎤</div>
+            <h3>4. Speak</h3>
+            <p>Speak without fear of mistakes.</p>
+        </div>
+
+        <div class="step">
+            <div class="step-icon">✏️</div>
+            <h3>5. Write</h3>
+            <p>Write new words and sentences.</p>
+        </div>
+
+        <div class="step">
+            <div class="step-icon">📚</div>
+            <h3>6. Read</h3>
+            <p>Read stories and articles.</p>
+        </div>
+
+        <div class="step">
+            <div class="step-icon">📱</div>
+            <h3>7. Use Apps</h3>
+            <p>Use apps to practice easily.</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= TIPS ================= -->
+
+<section class="tips" id="tips">
+
+    <h2 class="section-title">
+        Language Learning Tips
+    </h2>
+
+    <div class="tip-container">
+
+        <ul>
+
+            <li>Practice every day.</li>
+            <li>Learn 5–10 new words daily.</li>
+            <li>Repeat words aloud.</li>
+            <li>Watch movies with subtitles.</li>
+            <li>Listen to songs in the language.</li>
+            <li>Talk to people who speak the language.</li>
+            <li>Keep a vocabulary notebook.</li>
+            <li>Do not be afraid of mistakes.</li>
+            <li>Be patient and consistent.</li>
+            <li>Practice pronunciation.</li>
+
+        </ul>
+
+    </div>
+
+</section>
+
+
+<!-- ================= BENEFITS ================= -->
+
+<section class="benefits">
+
+    <div class="benefit-container">
+
+        <div>
+
+            <h2>Why Learn Other Languages?</h2>
+
+            <ul>
+
+                <li>Improve communication skills</li>
+                <li>Make international friends</li>
+                <li>Travel and explore the world</li>
+                <li>Better career opportunities</li>
+                <li>Understand other cultures</li>
+                <li>Boost confidence and brainpower</li>
+
+            </ul>
+
+            <a href="#contact" class="btn yellow-btn">
+                Start Your Journey →
+            </a>
+
+        </div>
+
+        <div class="benefit-image">
+            🧑‍💻🌎
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CONTACT ================= -->
+
+<section class="contact" id="contact">
+
+    <h2 class="section-title">
+        Contact Us
+    </h2>
+
+    <form class="contact-form">
+
+        <div class="form-row">
+
+            <input
+                type="text"
+                placeholder="Your Name"
+                required
+            >
+
+            <input
+                type="email"
+                placeholder="Your Email"
+                required
+            >
+
+        </div>
+
+        <select>
+
+            <option>Choose a Language</option>
+            <option>English</option>
+            <option>Arabic</option>
+            <option>French</option>
+            <option>Spanish</option>
+            <option>Chinese</option>
+
+        </select>
+
+        <textarea
+            placeholder="Your Message"
+        ></textarea>
+
+        <button class="submit-btn" type="submit">
+            Send Message
+        </button>
+
+    </form>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="footer-grid">
+
+        <div>
+
+            <h3>🌐 Speak<span style="color:#facc15;">World</span></h3>
+
+            <p>
+                Learn new languages and connect
+                with people around the world.
+            </p>
+
+            <p>
+                Learn • Speak • Connect 🌍
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h3>Quick Links</h3>
+
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#languages">Languages</a>
+            <a href="#learn">How to Learn</a>
+            <a href="#tips">Tips</a>
+            <a href="#contact">Contact</a>
+
+        </div>
+
+
+        <div>
+
+            <h3>Popular Languages</h3>
+
+            <a href="#">English</a>
+            <a href="#">Arabic</a>
+            <a href="#">French</a>
+            <a href="#">Spanish</a>
+            <a href="#">Chinese</a>
+
+        </div>
+
+
+        <div>
+
+            <h3>Subscribe</h3>
+
+            <p>
+                Subscribe for language-learning
+                tips and updates.
+            </p>
+
+            <div class="subscribe">
+
+                <input
+                    type="email"
+                    placeholder="Your email"
+                >
+
+                <button>
+                    Subscribe
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="copyright">
+
+        <span>
+            © 2026 SpeakWorld. All Rights Reserved.
+        </span>
+
+        <span>
+            Learn • Practice • Speak • Connect 🌍
+        </span>
+
+    </div>
+
+</footer>
+
+</body>
+</html>
