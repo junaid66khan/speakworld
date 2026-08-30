@@ -1,90 +1,987 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>SpeakWorld - Learn Arabic</title>
+
 <style>
-*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
-body{font-family:Arial,sans-serif;color:#172554;background:#f8fafc;line-height:1.6}
-nav{height:75px;background:white;display:flex;align-items:center;justify-content:space-between;padding:0 6%;position:sticky;top:0;z-index:1000;box-shadow:0 2px 15px rgba(0,0,0,.08)}
-.logo{font-size:26px;font-weight:bold;color:#0f4c81}.logo span{color:#fbbf24}
-.nav-links{display:flex;gap:30px;list-style:none}.nav-links a{text-decoration:none;color:#172554;font-weight:500}.nav-btn{background:#fbbf24;padding:10px 22px;border-radius:25px;font-weight:bold!important}
-.hero{padding:80px 7%;text-align:center;color:white;background:linear-gradient(120deg,#062c75,#0757b8,#7e22ce)}
-.hero h1{font-size:55px;margin-bottom:15px}.hero h1 span{color:#facc15}.hero p{font-size:20px;color:#e0f2fe}
-section{padding:60px 7%}.section-title{text-align:center;font-size:36px;margin-bottom:35px}.section-title:after{content:"";display:block;width:55px;height:4px;background:#facc15;margin:10px auto;border-radius:5px}
-.lesson-grid{max-width:1000px;margin:auto;display:grid;grid-template-columns:repeat(2,1fr);gap:20px}.lesson{background:white;padding:25px;border-radius:18px;box-shadow:0 5px 20px rgba(0,0,0,.08)}.lesson h3{color:#2563eb;margin-bottom:12px;font-size:22px}
-.phrase{display:flex;justify-content:space-between;gap:15px;border-bottom:1px solid #e2e8f0;padding:12px 0}.phrase:last-child{border-bottom:0}.arabic{font-size:21px;font-weight:bold;color:#7c3aed}
-.back{display:inline-block;margin-top:30px;background:#2563eb;color:white;text-decoration:none;padding:12px 25px;border-radius:25px}
-footer{background:#061633;color:white;text-align:center;padding:35px 20px}footer p{color:#cbd5e1;margin:8px}
-@media(max-width:700px){.nav-links{display:none}.hero h1{font-size:40px}.lesson-grid{grid-template-columns:1fr}}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    color:#172554;
+    background:#f8fafc;
+    line-height:1.6;
+}
+
+nav{
+    height:75px;
+    background:white;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 6%;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 2px 15px rgba(0,0,0,.08);
+}
+
+.logo{
+    font-size:26px;
+    font-weight:bold;
+    color:#0f4c81;
+}
+
+.logo span{
+    color:#fbbf24;
+}
+
+.nav-links{
+    display:flex;
+    gap:30px;
+    list-style:none;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:#172554;
+    font-weight:500;
+}
+
+.nav-links a:hover{
+    color:#2563eb;
+}
+
+.nav-btn{
+    background:#fbbf24;
+    padding:10px 22px;
+    border-radius:25px;
+    font-weight:bold!important;
+}
+
+.hero{
+    padding:80px 7%;
+    text-align:center;
+    color:white;
+    background:linear-gradient(120deg,#062c75,#0757b8,#7e22ce);
+}
+
+.hero h1{
+    font-size:55px;
+    margin-bottom:15px;
+}
+
+.hero h1 span{
+    color:#facc15;
+}
+
+.hero p{
+    font-size:20px;
+    color:#e0f2fe;
+}
+
+section{
+    padding:60px 7%;
+}
+
+.section-title{
+    text-align:center;
+    font-size:36px;
+    margin-bottom:35px;
+}
+
+.section-title:after{
+    content:"";
+    display:block;
+    width:55px;
+    height:4px;
+    background:#facc15;
+    margin:10px auto;
+    border-radius:5px;
+}
+
+.lesson-grid{
+    max-width:1000px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
+.lesson{
+    background:white;
+    padding:25px;
+    border-radius:18px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.lesson h3{
+    color:#2563eb;
+    margin-bottom:12px;
+    font-size:22px;
+}
+
+.phrase{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+    border-bottom:1px solid #e2e8f0;
+    padding:12px 0;
+}
+
+.phrase:last-child{
+    border-bottom:0;
+}
+
+.arabic{
+    font-size:21px;
+    font-weight:bold;
+    color:#7c3aed;
+}
+
+.listen-btn{
+    border:none;
+    background:#7c3aed;
+    color:white;
+    padding:7px 12px;
+    border-radius:18px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.listen-btn:hover{
+    background:#5b21b6;
+}
+
+.vocabulary{
+    background:#eaf5ff;
+}
+
+.vocab-grid{
+    max-width:1000px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.vocab-card{
+    background:white;
+    padding:22px;
+    border-radius:18px;
+    text-align:center;
+    box-shadow:0 5px 18px rgba(0,0,0,.07);
+}
+
+.vocab-card .word{
+    font-size:27px;
+    font-weight:bold;
+    color:#7c3aed;
+}
+
+.vocab-card .meaning{
+    color:#64748b;
+    margin:8px 0 15px;
+}
+
+.quiz{
+    background:white;
+}
+
+.quiz-box{
+    max-width:750px;
+    margin:auto;
+    background:linear-gradient(120deg,#dbeafe,#f3e8ff);
+    padding:35px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.question-number{
+    color:#7c3aed;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+.question{
+    font-size:25px;
+    font-weight:bold;
+    margin-bottom:25px;
+}
+
+.answers{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+}
+
+.answer-btn{
+    border:2px solid #2563eb;
+    background:white;
+    color:#172554;
+    padding:13px;
+    border-radius:12px;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:bold;
+}
+
+.answer-btn:hover{
+    background:#2563eb;
+    color:white;
+}
+
+.answer-btn.correct{
+    background:#16a34a;
+    color:white;
+    border-color:#16a34a;
+}
+
+.answer-btn.wrong{
+    background:#dc2626;
+    color:white;
+    border-color:#dc2626;
+}
+
+.quiz-message{
+    margin-top:20px;
+    font-size:18px;
+    font-weight:bold;
+    min-height:28px;
+}
+
+.next-btn,
+.restart-btn{
+    border:none;
+    background:#2563eb;
+    color:white;
+    padding:12px 28px;
+    border-radius:25px;
+    cursor:pointer;
+    font-weight:bold;
+    margin-top:20px;
+    display:none;
+}
+
+.next-btn:hover,
+.restart-btn:hover{
+    background:#1d4ed8;
+}
+
+.score{
+    font-size:28px;
+    font-weight:bold;
+    color:#7c3aed;
+    margin-top:15px;
+}
+
+.back{
+    display:inline-block;
+    margin-top:30px;
+    background:#2563eb;
+    color:white;
+    text-decoration:none;
+    padding:12px 25px;
+    border-radius:25px;
+}
+
+.back:hover{
+    background:#1d4ed8;
+}
+
+footer{
+    background:#061633;
+    color:white;
+    text-align:center;
+    padding:35px 20px;
+}
+
+footer p{
+    color:#cbd5e1;
+    margin:8px;
+}
+
+@media(max-width:900px){
+    .vocab-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:700px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .hero h1{
+        font-size:40px;
+    }
+
+    .lesson-grid{
+        grid-template-columns:1fr;
+    }
+
+    .vocab-grid{
+        grid-template-columns:1fr;
+    }
+
+    .answers{
+        grid-template-columns:1fr;
+    }
+}
 </style>
+
 </head>
+
 <body>
 
 <nav>
-<div class="logo">🌐 Speak<span>World</span></div>
+
+<div class="logo">
+🌐 Speak<span>World</span>
+</div>
+
 <ul class="nav-links">
-<li><a href="index.html">Home</a></li>
-<li><a href="index.html#about">About</a></li>
-<li><a href="index.html#languages">Languages</a></li>
-<li><a href="index.html#learn">How to Learn</a></li>
-<li><a class="nav-btn" href="index.html#languages">All Languages</a></li>
+
+<li>
+<a href="index.html">Home</a>
+</li>
+
+<li>
+<a href="index.html#about">About</a>
+</li>
+
+<li>
+<a href="index.html#languages">Languages</a>
+</li>
+
+<li>
+<a href="index.html#learn">How to Learn</a>
+</li>
+
+<li>
+<a class="nav-btn" href="index.html#languages">
+All Languages
+</a>
+</li>
+
 </ul>
+
 </nav>
 
 <section class="hero">
-<h1>🇸🇦 Learn <span>Arabic</span></h1>
-<p>Learn useful Arabic words and everyday sentences.</p>
+
+<h1>
+🇸🇦 Learn <span>Arabic</span>
+</h1>
+
+<p>
+Learn Arabic words, pronunciation and everyday sentences.
+</p>
+
 </section>
 
 <section>
-<h2 class="section-title">Basic Arabic Phrases</h2>
+
+<h2 class="section-title">
+Basic Arabic Phrases
+</h2>
+
 <div class="lesson-grid">
 
 <div class="lesson">
+
 <h3>👋 Greetings</h3>
-<div class="phrase"><span>Hello</span><span class="arabic">مرحبا</span></div>
-<div class="phrase"><span>Good morning</span><span class="arabic">صباح الخير</span></div>
-<div class="phrase"><span>Good evening</span><span class="arabic">مساء الخير</span></div>
-<div class="phrase"><span>How are you?</span><span class="arabic">كيف حالك؟</span></div>
-<div class="phrase"><span>Goodbye</span><span class="arabic">مع السلامة</span></div>
+
+<div class="phrase">
+<span>Hello</span>
+<span>
+<span class="arabic">مرحبا</span>
+<button class="listen-btn" onclick="speak('مرحبا')">🔊</button>
+</span>
+</div>
+
+<div class="phrase">
+<span>Good morning</span>
+<span>
+<span class="arabic">صباح الخير</span>
+<button class="listen-btn" onclick="speak('صباح الخير')">🔊</button>
+</span>
+</div>
+
+<div class="phrase">
+<span>Good evening</span>
+<span>
+<span class="arabic">مساء الخير</span>
+<button class="listen-btn" onclick="speak('مساء الخير')">🔊</button>
+</span>
+</div>
+
+<div class="phrase">
+<span>How are you?</span>
+<span>
+<span class="arabic">كيف حالك؟</span>
+<button class="listen-btn" onclick="speak('كيف حالك')">🔊</button>
+</span>
+</div>
+
+<div class="phrase">
+<span>Goodbye</span>
+<span>
+<span class="arabic">مع السلامة</span>
+<button class="listen-btn" onclick="speak('مع السلامة')">🔊</button>
+</span>
+</div>
+
 </div>
 
 <div class="lesson">
+
 <h3>💬 Daily Words</h3>
-<div class="phrase"><span>Thank you</span><span class="arabic">شكرا</span></div>
-<div class="phrase"><span>Please</span><span class="arabic">من فضلك</span></div>
-<div class="phrase"><span>Yes</span><span class="arabic">نعم</span></div>
-<div class="phrase"><span>No</span><span class="arabic">لا</span></div>
-<div class="phrase"><span>Sorry</span><span class="arabic">آسف</span></div>
+
+<div class="phrase">
+<span>Thank you</span>
+<span>
+<span class="arabic">شكرا</span>
+<button class="listen-btn" onclick="speak('شكرا')">🔊</button>
+</span>
+</div>
+
+<div class="phrase">
+<span>Please</span>
+<span>
+<span class="arabic">من فضلك</span>
+<button class="listen-btn" onclick="speak('من فضلك')">🔊</button>
+</span>
+</div>
+
+<div class="phrase">
+<span>Yes</span>
+<span>
+<span class="arabic">نعم</span>
+<button class="listen-btn" onclick="speak('نعم')">🔊</button>
+</span>
+</div>
+
+<div class="phrase">
+<span>No</span>
+<span>
+<span class="arabic">لا</span>
+<button class="listen-btn" onclick="speak('لا')">🔊</button>
+</span>
+</div>
+
+<div class="phrase">
+<span>Sorry</span>
+<span>
+<span class="arabic">آسف</span>
+<button class="listen-btn" onclick="speak('آسف')">🔊</button>
+</span>
+</div>
+
 </div>
 
 <div class="lesson">
+
 <h3>🏠 Useful Sentences</h3>
-<div class="phrase"><span>My name is Junaid.</span><span class="arabic">اسمي جنيد</span></div>
-<div class="phrase"><span>Where are you from?</span><span class="arabic">من أين أنت؟</span></div>
-<div class="phrase"><span>I am learning Arabic.</span><span class="arabic">أنا أتعلم العربية</span></div>
-<div class="phrase"><span>Nice to meet you.</span><span class="arabic">تشرفت بلقائك</span></div>
+
+<div class="phrase">
+<span>My name is Junaid.</span>
+<span>
+<span class="arabic">اسمي جنيد</span>
+<button class="listen-btn" onclick="speak('اسمي جنيد')">🔊</button>
+</span>
+</div>
+
+<div class="phrase">
+<span>Where are you from?</span>
+<span>
+<span class="arabic">من أين أنت؟</span>
+<button class="listen-btn" onclick="speak('من أين أنت')">🔊</button>
+</span>
+</div>
+
+<div class="phrase">
+<span>I am learning Arabic.</span>
+<span>
+<span class="arabic">أنا أتعلم العربية</span>
+<button class="listen-btn" onclick="speak('أنا أتعلم العربية')">🔊</button>
+</span>
+</div>
+
+<div class="phrase">
+<span>Nice to meet you.</span>
+<span>
+<span class="arabic">تشرفت بلقائك</span>
+<button class="listen-btn" onclick="speak('تشرفت بلقائك')">🔊</button>
+</span>
+</div>
+
 </div>
 
 <div class="lesson">
+
 <h3>📚 Numbers</h3>
-<div class="phrase"><span>One</span><span class="arabic">واحد</span></div>
-<div class="phrase"><span>Two</span><span class="arabic">اثنان</span></div>
-<div class="phrase"><span>Three</span><span class="arabic">ثلاثة</span></div>
-<div class="phrase"><span>Four</span><span class="arabic">أربعة</span></div>
-<div class="phrase"><span>Five</span><span class="arabic">خمسة</span></div>
+
+<div class="phrase">
+<span>One</span>
+<span>
+<span class="arabic">واحد</span>
+<button class="listen-btn" onclick="speak('واحد')">🔊</button>
+</span>
+</div>
+
+<div class="phrase">
+<span>Two</span>
+<span>
+<span class="arabic">اثنان</span>
+<button class="listen-btn" onclick="speak('اثنان')">🔊</button>
+</span>
+</div>
+
+<div class="phrase">
+<span>Three</span>
+<span>
+<span class="arabic">ثلاثة</span>
+<button class="listen-btn" onclick="speak('ثلاثة')">🔊</button>
+</span>
+</div>
+
+<div class="phrase">
+<span>Four</span>
+<span>
+<span class="arabic">أربعة</span>
+<button class="listen-btn" onclick="speak('أربعة')">🔊</button>
+</span>
+</div>
+
+<div class="phrase">
+<span>Five</span>
+<span>
+<span class="arabic">خمسة</span>
+<button class="listen-btn" onclick="speak('خمسة')">🔊</button>
+</span>
 </div>
 
 </div>
-<center><a class="back" href="index.html#languages">← Back to Languages</a></center>
+
+</div>
+
+<center>
+<a class="back" href="index.html#languages">
+← Back to Languages
+</a>
+</center>
+
+</section>
+
+<section class="vocabulary">
+
+<h2 class="section-title">
+📚 Arabic Vocabulary
+</h2>
+
+<div class="vocab-grid">
+
+<div class="vocab-card">
+<div class="word">بيت</div>
+<div class="meaning">گھر — House</div>
+<button class="listen-btn" onclick="speak('بيت')">🔊 Listen</button>
+</div>
+
+<div class="vocab-card">
+<div class="word">ماء</div>
+<div class="meaning">پانی — Water</div>
+<button class="listen-btn" onclick="speak('ماء')">🔊 Listen</button>
+</div>
+
+<div class="vocab-card">
+<div class="word">طعام</div>
+<div class="meaning">کھانا — Food</div>
+<button class="listen-btn" onclick="speak('طعام')">🔊 Listen</button>
+</div>
+
+<div class="vocab-card">
+<div class="word">صديق</div>
+<div class="meaning">دوست — Friend</div>
+<button class="listen-btn" onclick="speak('صديق')">🔊 Listen</button>
+</div>
+
+<div class="vocab-card">
+<div class="word">كتاب</div>
+<div class="meaning">کتاب — Book</div>
+<button class="listen-btn" onclick="speak('كتاب')">🔊 Listen</button>
+</div>
+
+<div class="vocab-card">
+<div class="word">مدرسة</div>
+<div class="meaning">اسکول — School</div>
+<button class="listen-btn" onclick="speak('مدرسة')">🔊 Listen</button>
+</div>
+
+<div class="vocab-card">
+<div class="word">معلم</div>
+<div class="meaning">استاد — Teacher</div>
+<button class="listen-btn" onclick="speak('معلم')">🔊 Listen</button>
+</div>
+
+<div class="vocab-card">
+<div class="word">عائلة</div>
+<div class="meaning">خاندان — Family</div>
+<button class="listen-btn" onclick="speak('عائلة')">🔊 Listen</button>
+</div>
+
+<div class="vocab-card">
+<div class="word">سفر</div>
+<div class="meaning">سفر — Travel</div>
+<button class="listen-btn" onclick="speak('سفر')">🔊 Listen</button>
+</div>
+
+</div>
+
+</section>
+
+<section class="quiz">
+
+<h2 class="section-title">
+🧠 Arabic Mini Quiz
+</h2>
+
+<div class="quiz-box">
+
+<div class="question-number" id="questionNumber">
+Question 1 of 10
+</div>
+
+<div class="question" id="question">
+What is the Arabic word for "Water"?
+</div>
+
+<div class="answers" id="answers"></div>
+
+<div class="quiz-message" id="quizMessage"></div>
+
+<button class="next-btn" id="nextButton" onclick="nextQuestion()">
+Next Question →
+</button>
+
+<div class="score" id="score"></div>
+
+<button class="restart-btn" id="restartButton" onclick="restartQuiz()">
+🔄 Restart Quiz
+</button>
+
+</div>
+
 </section>
 
 <footer>
-<h3>🌐 Speak<span style="color:#facc15">World</span></h3>
-<p>Learn • Practice • Speak • Connect 🌍</p>
-<p>© 2026 SpeakWorld. All Rights Reserved.</p>
+
+<h3>
+🌐 Speak<span style="color:#facc15">World</span>
+</h3>
+
+<p>
+Learn • Practice • Speak • Connect 🌍
+</p>
+
+<p>
+© 2026 SpeakWorld. All Rights Reserved.
+</p>
+
 </footer>
+
+<script>
+
+/* =========================
+   ARABIC PRONUNCIATION
+========================= */
+
+function speak(text){
+
+    if("speechSynthesis" in window){
+
+        window.speechSynthesis.cancel();
+
+        const speech =
+            new SpeechSynthesisUtterance(text);
+
+        speech.lang = "ar-SA";
+        speech.rate = 0.8;
+        speech.pitch = 1;
+
+        window.speechSynthesis.speak(speech);
+
+    }else{
+
+        alert("Sorry! Your browser does not support speech.");
+
+    }
+}
+
+
+/* =========================
+   QUIZ DATA
+========================= */
+
+const quizData = [
+
+{
+question:'What is the Arabic word for "Water"?',
+answers:["ماء","بيت","كتاب","طعام"],
+correct:"ماء"
+},
+
+{
+question:'What is the Arabic word for "House"?',
+answers:["مدرسة","بيت","صديق","ماء"],
+correct:"بيت"
+},
+
+{
+question:'What is the Arabic word for "Book"?',
+answers:["كتاب","طعام","معلم","سفر"],
+correct:"كتاب"
+},
+
+{
+question:'What is the Arabic word for "Friend"?',
+answers:["عائلة","صديق","مدرسة","بيت"],
+correct:"صديق"
+},
+
+{
+question:'What is the Arabic word for "Food"?',
+answers:["طعام","كتاب","ماء","معلم"],
+correct:"طعام"
+},
+
+{
+question:'What is the Arabic word for "Teacher"?',
+answers:["معلم","صديق","عائلة","بيت"],
+correct:"معلم"
+},
+
+{
+question:'What is the Arabic word for "Family"?',
+answers:["عائلة","سفر","مدرسة","كتاب"],
+correct:"عائلة"
+},
+
+{
+question:'What is the Arabic word for "School"?',
+answers:["مدرسة","طعام","صديق","ماء"],
+correct:"مدرسة"
+},
+
+{
+question:'What is the Arabic word for "Travel"?',
+answers:["سفر","معلم","ماء","عائلة"],
+correct:"سفر"
+},
+
+{
+question:'What is the Arabic word for "Thank you"?',
+answers:["شكرا","مرحبا","مع السلامة","آسف"],
+correct:"شكرا"
+}
+
+];
+
+let currentQuestion = 0;
+let score = 0;
+let answered = false;
+
+const questionNumber =
+    document.getElementById("questionNumber");
+
+const question =
+    document.getElementById("question");
+
+const answers =
+    document.getElementById("answers");
+
+const quizMessage =
+    document.getElementById("quizMessage");
+
+const nextButton =
+    document.getElementById("nextButton");
+
+const scoreBox =
+    document.getElementById("score");
+
+const restartButton =
+    document.getElementById("restartButton");
+
+
+function loadQuestion(){
+
+    answered = false;
+
+    const current =
+        quizData[currentQuestion];
+
+    questionNumber.textContent =
+        "Question " +
+        (currentQuestion + 1) +
+        " of " +
+        quizData.length;
+
+    question.textContent =
+        current.question;
+
+    answers.innerHTML = "";
+
+    quizMessage.textContent = "";
+
+    nextButton.style.display = "none";
+
+    scoreBox.textContent = "";
+
+    current.answers.forEach(function(answer){
+
+        const button =
+            document.createElement("button");
+
+        button.className =
+            "answer-btn";
+
+        button.textContent =
+            answer;
+
+        button.onclick = function(){
+
+            checkAnswer(button,answer);
+
+        };
+
+        answers.appendChild(button);
+
+    });
+
+}
+
+
+function checkAnswer(button,selectedAnswer){
+
+    if(answered){
+        return;
+    }
+
+    answered = true;
+
+    const correctAnswer =
+        quizData[currentQuestion].correct;
+
+    const allButtons =
+        document.querySelectorAll(".answer-btn");
+
+    allButtons.forEach(function(btn){
+
+        if(btn.textContent === correctAnswer){
+
+            btn.classList.add("correct");
+
+        }
+
+    });
+
+    if(selectedAnswer === correctAnswer){
+
+        score++;
+
+        button.classList.add("correct");
+
+        quizMessage.textContent =
+            "✅ Correct! Well done!";
+
+        quizMessage.style.color =
+            "#16a34a";
+
+    }else{
+
+        button.classList.add("wrong");
+
+        quizMessage.textContent =
+            "❌ Wrong answer. Correct answer: " +
+            correctAnswer;
+
+        quizMessage.style.color =
+            "#dc2626";
+
+    }
+
+    if(currentQuestion < quizData.length - 1){
+
+        nextButton.style.display =
+            "inline-block";
+
+    }else{
+
+        showFinalScore();
+
+    }
+
+}
+
+
+function nextQuestion(){
+
+    currentQuestion++;
+
+    loadQuestion();
+
+}
+
+
+function showFinalScore(){
+
+    questionNumber.textContent =
+        "🎉 Quiz Complete!";
+
+    scoreBox.textContent =
+        "Your Score: " +
+        score +
+        " / " +
+        quizData.length;
+
+    restartButton.style.display =
+        "inline-block";
+
+    nextButton.style.display =
+        "none";
+
+}
+
+
+function restartQuiz(){
+
+    currentQuestion = 0;
+
+    score = 0;
+
+    restartButton.style.display =
+        "none";
+
+    loadQuestion();
+
+}
+
+
+loadQuestion();
+
+</script>
+
 </body>
 </html>
