@@ -1,88 +1,986 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>SpeakWorld - Learn French</title>
+
 <style>
-*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
-body{font-family:Arial,sans-serif;color:#172554;background:#f8fafc;line-height:1.6}
-nav{height:75px;background:white;display:flex;align-items:center;justify-content:space-between;padding:0 6%;position:sticky;top:0;z-index:1000;box-shadow:0 2px 15px rgba(0,0,0,.08)}
-.logo{font-size:26px;font-weight:bold;color:#0f4c81}.logo span{color:#fbbf24}.nav-links{display:flex;gap:30px;list-style:none}.nav-links a{text-decoration:none;color:#172554;font-weight:500}.nav-btn{background:#fbbf24;padding:10px 22px;border-radius:25px;font-weight:bold!important}
-.hero{padding:80px 7%;text-align:center;color:white;background:linear-gradient(120deg,#062c75,#0757b8,#7e22ce)}.hero h1{font-size:55px;margin-bottom:15px}.hero h1 span{color:#facc15}.hero p{font-size:20px;color:#e0f2fe}
-section{padding:60px 7%}.section-title{text-align:center;font-size:36px;margin-bottom:35px}.section-title:after{content:"";display:block;width:55px;height:4px;background:#facc15;margin:10px auto;border-radius:5px}
-.lesson-grid{max-width:1000px;margin:auto;display:grid;grid-template-columns:repeat(2,1fr);gap:20px}.lesson{background:white;padding:25px;border-radius:18px;box-shadow:0 5px 20px rgba(0,0,0,.08)}.lesson h3{color:#2563eb;margin-bottom:12px;font-size:22px}
-.phrase{display:flex;justify-content:space-between;gap:15px;border-bottom:1px solid #e2e8f0;padding:12px 0}.phrase:last-child{border-bottom:0}.answer{font-weight:bold;color:#7c3aed}
-.back{display:inline-block;margin-top:30px;background:#2563eb;color:white;text-decoration:none;padding:12px 25px;border-radius:25px}
-footer{background:#061633;color:white;text-align:center;padding:35px 20px}footer p{color:#cbd5e1;margin:8px}
-@media(max-width:700px){.nav-links{display:none}.hero h1{font-size:40px}.lesson-grid{grid-template-columns:1fr}}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    color:#172554;
+    background:#f8fafc;
+    line-height:1.6;
+}
+
+nav{
+    height:75px;
+    background:white;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 6%;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 2px 15px rgba(0,0,0,.08);
+}
+
+.logo{
+    font-size:26px;
+    font-weight:bold;
+    color:#0f4c81;
+}
+
+.logo span{
+    color:#fbbf24;
+}
+
+.nav-links{
+    display:flex;
+    gap:30px;
+    list-style:none;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:#172554;
+    font-weight:500;
+}
+
+.nav-links a:hover{
+    color:#2563eb;
+}
+
+.nav-btn{
+    background:#fbbf24;
+    padding:10px 22px;
+    border-radius:25px;
+    font-weight:bold!important;
+}
+
+.hero{
+    padding:80px 7%;
+    text-align:center;
+    color:white;
+    background:linear-gradient(120deg,#062c75,#0757b8,#7e22ce);
+}
+
+.hero h1{
+    font-size:55px;
+    margin-bottom:15px;
+}
+
+.hero h1 span{
+    color:#facc15;
+}
+
+.hero p{
+    font-size:20px;
+    color:#e0f2fe;
+}
+
+section{
+    padding:60px 7%;
+}
+
+.section-title{
+    text-align:center;
+    font-size:36px;
+    margin-bottom:35px;
+}
+
+.section-title:after{
+    content:"";
+    display:block;
+    width:55px;
+    height:4px;
+    background:#facc15;
+    margin:10px auto;
+    border-radius:5px;
+}
+
+.lesson-grid{
+    max-width:1000px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
+.lesson{
+    background:white;
+    padding:25px;
+    border-radius:18px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.lesson h3{
+    color:#2563eb;
+    margin-bottom:12px;
+    font-size:22px;
+}
+
+.phrase{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+    border-bottom:1px solid #e2e8f0;
+    padding:12px 0;
+}
+
+.phrase:last-child{
+    border-bottom:0;
+}
+
+.answer{
+    font-weight:bold;
+    color:#7c3aed;
+}
+
+.listen-btn{
+    border:none;
+    background:#7c3aed;
+    color:white;
+    padding:7px 12px;
+    border-radius:18px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.listen-btn:hover{
+    background:#5b21b6;
+}
+
+.vocabulary{
+    background:#eaf5ff;
+}
+
+.vocab-grid{
+    max-width:1000px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.vocab-card{
+    background:white;
+    padding:22px;
+    border-radius:18px;
+    text-align:center;
+    box-shadow:0 5px 18px rgba(0,0,0,.07);
+}
+
+.vocab-card .word{
+    font-size:27px;
+    font-weight:bold;
+    color:#7c3aed;
+}
+
+.vocab-card .meaning{
+    color:#64748b;
+    margin:8px 0 15px;
+}
+
+.quiz{
+    background:white;
+}
+
+.quiz-box{
+    max-width:750px;
+    margin:auto;
+    background:linear-gradient(120deg,#dbeafe,#f3e8ff);
+    padding:35px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.question-number{
+    color:#7c3aed;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+.question{
+    font-size:25px;
+    font-weight:bold;
+    margin-bottom:25px;
+}
+
+.answers{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+}
+
+.answer-btn{
+    border:2px solid #2563eb;
+    background:white;
+    color:#172554;
+    padding:13px;
+    border-radius:12px;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:bold;
+}
+
+.answer-btn:hover{
+    background:#2563eb;
+    color:white;
+}
+
+.answer-btn.correct{
+    background:#16a34a;
+    color:white;
+    border-color:#16a34a;
+}
+
+.answer-btn.wrong{
+    background:#dc2626;
+    color:white;
+    border-color:#dc2626;
+}
+
+.quiz-message{
+    margin-top:20px;
+    font-size:18px;
+    font-weight:bold;
+    min-height:28px;
+}
+
+.next-btn,
+.restart-btn{
+    border:none;
+    background:#2563eb;
+    color:white;
+    padding:12px 28px;
+    border-radius:25px;
+    cursor:pointer;
+    font-weight:bold;
+    margin-top:20px;
+    display:none;
+}
+
+.next-btn:hover,
+.restart-btn:hover{
+    background:#1d4ed8;
+}
+
+.score{
+    font-size:28px;
+    font-weight:bold;
+    color:#7c3aed;
+    margin-top:15px;
+}
+
+.back{
+    display:inline-block;
+    margin-top:30px;
+    background:#2563eb;
+    color:white;
+    text-decoration:none;
+    padding:12px 25px;
+    border-radius:25px;
+}
+
+.back:hover{
+    background:#1d4ed8;
+}
+
+footer{
+    background:#061633;
+    color:white;
+    text-align:center;
+    padding:35px 20px;
+}
+
+footer p{
+    color:#cbd5e1;
+    margin:8px;
+}
+
+@media(max-width:900px){
+    .vocab-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:700px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .hero h1{
+        font-size:40px;
+    }
+
+    .lesson-grid{
+        grid-template-columns:1fr;
+    }
+
+    .vocab-grid{
+        grid-template-columns:1fr;
+    }
+
+    .answers{
+        grid-template-columns:1fr;
+    }
+}
 </style>
+
 </head>
+
 <body>
 
 <nav>
-<div class="logo">🌐 Speak<span>World</span></div>
+
+<div class="logo">
+🌐 Speak<span>World</span>
+</div>
+
 <ul class="nav-links">
-<li><a href="index.html">Home</a></li>
-<li><a href="index.html#about">About</a></li>
-<li><a href="index.html#languages">Languages</a></li>
-<li><a href="index.html#learn">How to Learn</a></li>
-<li><a class="nav-btn" href="index.html#languages">All Languages</a></li>
+
+<li>
+<a href="index.html">Home</a>
+</li>
+
+<li>
+<a href="index.html#about">About</a>
+</li>
+
+<li>
+<a href="index.html#languages">Languages</a>
+</li>
+
+<li>
+<a href="index.html#learn">How to Learn</a>
+</li>
+
+<li>
+<a class="nav-btn" href="index.html#languages">
+All Languages
+</a>
+</li>
+
 </ul>
+
 </nav>
 
 <section class="hero">
-<h1>🇫🇷 Learn <span>French</span></h1>
-<p>Learn useful French words and everyday sentences.</p>
+
+<h1>
+🇫🇷 Learn <span>French</span>
+</h1>
+
+<p>
+Learn French words, pronunciation and everyday sentences.
+</p>
+
 </section>
 
 <section>
-<h2 class="section-title">Basic French Phrases</h2>
+
+<h2 class="section-title">
+Basic French Phrases
+</h2>
+
 <div class="lesson-grid">
 
 <div class="lesson">
+
 <h3>👋 Greetings</h3>
-<div class="phrase"><span>Hello</span><span class="answer">Bonjour</span></div>
-<div class="phrase"><span>Good evening</span><span class="answer">Bonsoir</span></div>
-<div class="phrase"><span>How are you?</span><span class="answer">Comment allez-vous ?</span></div>
-<div class="phrase"><span>Goodbye</span><span class="answer">Au revoir</span></div>
-<div class="phrase"><span>See you soon</span><span class="answer">À bientôt</span></div>
+
+<div class="phrase">
+<span>Hello</span>
+<span>
+<span class="answer">Bonjour</span>
+<button class="listen-btn" onclick="speak('Bonjour')">🔊</button>
+</span>
+</div>
+
+<div class="phrase">
+<span>Good evening</span>
+<span>
+<span class="answer">Bonsoir</span>
+<button class="listen-btn" onclick="speak('Bonsoir')">🔊</button>
+</span>
+</div>
+
+<div class="phrase">
+<span>How are you?</span>
+<span>
+<span class="answer">Comment allez-vous ?</span>
+<button class="listen-btn" onclick="speak('Comment allez-vous')">🔊</button>
+</span>
+</div>
+
+<div class="phrase">
+<span>Goodbye</span>
+<span>
+<span class="answer">Au revoir</span>
+<button class="listen-btn" onclick="speak('Au revoir')">🔊</button>
+</span>
+</div>
+
+<div class="phrase">
+<span>See you soon</span>
+<span>
+<span class="answer">À bientôt</span>
+<button class="listen-btn" onclick="speak('À bientôt')">🔊</button>
+</span>
+</div>
+
 </div>
 
 <div class="lesson">
+
 <h3>💬 Daily Words</h3>
-<div class="phrase"><span>Thank you</span><span class="answer">Merci</span></div>
-<div class="phrase"><span>Please</span><span class="answer">S'il vous plaît</span></div>
-<div class="phrase"><span>Yes</span><span class="answer">Oui</span></div>
-<div class="phrase"><span>No</span><span class="answer">Non</span></div>
-<div class="phrase"><span>Sorry</span><span class="answer">Désolé</span></div>
+
+<div class="phrase">
+<span>Thank you</span>
+<span>
+<span class="answer">Merci</span>
+<button class="listen-btn" onclick="speak('Merci')">🔊</button>
+</span>
+</div>
+
+<div class="phrase">
+<span>Please</span>
+<span>
+<span class="answer">S'il vous plaît</span>
+<button class="listen-btn" onclick="speak('S il vous plaît')">🔊</button>
+</span>
+</div>
+
+<div class="phrase">
+<span>Yes</span>
+<span>
+<span class="answer">Oui</span>
+<button class="listen-btn" onclick="speak('Oui')">🔊</button>
+</span>
+</div>
+
+<div class="phrase">
+<span>No</span>
+<span>
+<span class="answer">Non</span>
+<button class="listen-btn" onclick="speak('Non')">🔊</button>
+</span>
+</div>
+
+<div class="phrase">
+<span>Sorry</span>
+<span>
+<span class="answer">Désolé</span>
+<button class="listen-btn" onclick="speak('Désolé')">🔊</button>
+</span>
+</div>
+
 </div>
 
 <div class="lesson">
+
 <h3>🏠 Useful Sentences</h3>
-<div class="phrase"><span>My name is Junaid.</span><span class="answer">Je m'appelle Junaid.</span></div>
-<div class="phrase"><span>Where are you from?</span><span class="answer">D'où venez-vous ?</span></div>
-<div class="phrase"><span>I am learning French.</span><span class="answer">J'apprends le français.</span></div>
-<div class="phrase"><span>Nice to meet you.</span><span class="answer">Enchanté.</span></div>
+
+<div class="phrase">
+<span>My name is Junaid.</span>
+<span>
+<span class="answer">Je m'appelle Junaid.</span>
+<button class="listen-btn" onclick="speak('Je m appelle Junaid')">🔊</button>
+</span>
+</div>
+
+<div class="phrase">
+<span>Where are you from?</span>
+<span>
+<span class="answer">D'où venez-vous ?</span>
+<button class="listen-btn" onclick="speak('D où venez-vous')">🔊</button>
+</span>
+</div>
+
+<div class="phrase">
+<span>I am learning French.</span>
+<span>
+<span class="answer">J'apprends le français.</span>
+<button class="listen-btn" onclick="speak('J apprends le français')">🔊</button>
+</span>
+</div>
+
+<div class="phrase">
+<span>Nice to meet you.</span>
+<span>
+<span class="answer">Enchanté.</span>
+<button class="listen-btn" onclick="speak('Enchanté')">🔊</button>
+</span>
+</div>
+
 </div>
 
 <div class="lesson">
+
 <h3>📚 Numbers</h3>
-<div class="phrase"><span>One</span><span class="answer">Un</span></div>
-<div class="phrase"><span>Two</span><span class="answer">Deux</span></div>
-<div class="phrase"><span>Three</span><span class="answer">Trois</span></div>
-<div class="phrase"><span>Four</span><span class="answer">Quatre</span></div>
-<div class="phrase"><span>Five</span><span class="answer">Cinq</span></div>
+
+<div class="phrase">
+<span>One</span>
+<span>
+<span class="answer">Un</span>
+<button class="listen-btn" onclick="speak('Un')">🔊</button>
+</span>
+</div>
+
+<div class="phrase">
+<span>Two</span>
+<span>
+<span class="answer">Deux</span>
+<button class="listen-btn" onclick="speak('Deux')">🔊</button>
+</span>
+</div>
+
+<div class="phrase">
+<span>Three</span>
+<span>
+<span class="answer">Trois</span>
+<button class="listen-btn" onclick="speak('Trois')">🔊</button>
+</span>
+</div>
+
+<div class="phrase">
+<span>Four</span>
+<span>
+<span class="answer">Quatre</span>
+<button class="listen-btn" onclick="speak('Quatre')">🔊</button>
+</span>
+</div>
+
+<div class="phrase">
+<span>Five</span>
+<span>
+<span class="answer">Cinq</span>
+<button class="listen-btn" onclick="speak('Cinq')">🔊</button>
+</span>
 </div>
 
 </div>
-<center><a class="back" href="index.html#languages">← Back to Languages</a></center>
+
+</div>
+
+<center>
+<a class="back" href="index.html#languages">
+← Back to Languages
+</a>
+</center>
+
+</section>
+
+<section class="vocabulary">
+
+<h2 class="section-title">
+📚 French Vocabulary
+</h2>
+
+<div class="vocab-grid">
+
+<div class="vocab-card">
+<div class="word">Maison</div>
+<div class="meaning">گھر — House</div>
+<button class="listen-btn" onclick="speak('Maison')">🔊 Listen</button>
+</div>
+
+<div class="vocab-card">
+<div class="word">Eau</div>
+<div class="meaning">پانی — Water</div>
+<button class="listen-btn" onclick="speak('Eau')">🔊 Listen</button>
+</div>
+
+<div class="vocab-card">
+<div class="word">Nourriture</div>
+<div class="meaning">کھانا — Food</div>
+<button class="listen-btn" onclick="speak('Nourriture')">🔊 Listen</button>
+</div>
+
+<div class="vocab-card">
+<div class="word">Ami</div>
+<div class="meaning">دوست — Friend</div>
+<button class="listen-btn" onclick="speak('Ami')">🔊 Listen</button>
+</div>
+
+<div class="vocab-card">
+<div class="word">Livre</div>
+<div class="meaning">کتاب — Book</div>
+<button class="listen-btn" onclick="speak('Livre')">🔊 Listen</button>
+</div>
+
+<div class="vocab-card">
+<div class="word">École</div>
+<div class="meaning">اسکول — School</div>
+<button class="listen-btn" onclick="speak('École')">🔊 Listen</button>
+</div>
+
+<div class="vocab-card">
+<div class="word">Professeur</div>
+<div class="meaning">استاد — Teacher</div>
+<button class="listen-btn" onclick="speak('Professeur')">🔊 Listen</button>
+</div>
+
+<div class="vocab-card">
+<div class="word">Famille</div>
+<div class="meaning">خاندان — Family</div>
+<button class="listen-btn" onclick="speak('Famille')">🔊 Listen</button>
+</div>
+
+<div class="vocab-card">
+<div class="word">Voyage</div>
+<div class="meaning">سفر — Travel</div>
+<button class="listen-btn" onclick="speak('Voyage')">🔊 Listen</button>
+</div>
+
+</div>
+
+</section>
+
+<section class="quiz">
+
+<h2 class="section-title">
+🧠 French Mini Quiz
+</h2>
+
+<div class="quiz-box">
+
+<div class="question-number" id="questionNumber">
+Question 1 of 10
+</div>
+
+<div class="question" id="question">
+What is the French word for "Water"?
+</div>
+
+<div class="answers" id="answers"></div>
+
+<div class="quiz-message" id="quizMessage"></div>
+
+<button class="next-btn" id="nextButton" onclick="nextQuestion()">
+Next Question →
+</button>
+
+<div class="score" id="score"></div>
+
+<button class="restart-btn" id="restartButton" onclick="restartQuiz()">
+🔄 Restart Quiz
+</button>
+
+</div>
+
 </section>
 
 <footer>
-<h3>🌐 Speak<span style="color:#facc15">World</span></h3>
-<p>Learn • Practice • Speak • Connect 🌍</p>
-<p>© 2026 SpeakWorld. All Rights Reserved.</p>
+
+<h3>
+🌐 Speak<span style="color:#facc15">World</span>
+</h3>
+
+<p>
+Learn • Practice • Speak • Connect 🌍
+</p>
+
+<p>
+© 2026 SpeakWorld. All Rights Reserved.
+</p>
+
 </footer>
+
+<script>
+
+/* =========================
+   FRENCH PRONUNCIATION
+========================= */
+
+function speak(text){
+
+    if("speechSynthesis" in window){
+
+        window.speechSynthesis.cancel();
+
+        const speech =
+            new SpeechSynthesisUtterance(text);
+
+        speech.lang = "fr-FR";
+        speech.rate = 0.8;
+        speech.pitch = 1;
+
+        window.speechSynthesis.speak(speech);
+
+    }else{
+
+        alert("Sorry! Your browser does not support speech.");
+
+    }
+}
+
+
+/* =========================
+   QUIZ DATA
+========================= */
+
+const quizData = [
+
+{
+question:'What is the French word for "Water"?',
+answers:["Eau","Maison","Livre","Nourriture"],
+correct:"Eau"
+},
+
+{
+question:'What is the French word for "House"?',
+answers:["École","Maison","Ami","Eau"],
+correct:"Maison"
+},
+
+{
+question:'What is the French word for "Book"?',
+answers:["Livre","Nourriture","Professeur","Voyage"],
+correct:"Livre"
+},
+
+{
+question:'What is the French word for "Friend"?',
+answers:["Famille","Ami","École","Maison"],
+correct:"Ami"
+},
+
+{
+question:'What is the French word for "Food"?',
+answers:["Nourriture","Livre","Eau","Professeur"],
+correct:"Nourriture"
+},
+
+{
+question:'What is the French word for "Teacher"?',
+answers:["Professeur","Ami","Famille","Maison"],
+correct:"Professeur"
+},
+
+{
+question:'What is the French word for "Family"?',
+answers:["Famille","Voyage","École","Livre"],
+correct:"Famille"
+},
+
+{
+question:'What is the French word for "School"?',
+answers:["École","Nourriture","Ami","Eau"],
+correct:"École"
+},
+
+{
+question:'What is the French word for "Travel"?',
+answers:["Voyage","Professeur","Eau","Famille"],
+correct:"Voyage"
+},
+
+{
+question:'What is the French word for "Thank you"?',
+answers:["Merci","Bonjour","Au revoir","Désolé"],
+correct:"Merci"
+}
+
+];
+
+let currentQuestion = 0;
+let score = 0;
+let answered = false;
+
+const questionNumber =
+    document.getElementById("questionNumber");
+
+const question =
+    document.getElementById("question");
+
+const answers =
+    document.getElementById("answers");
+
+const quizMessage =
+    document.getElementById("quizMessage");
+
+const nextButton =
+    document.getElementById("nextButton");
+
+const scoreBox =
+    document.getElementById("score");
+
+const restartButton =
+    document.getElementById("restartButton");
+
+
+function loadQuestion(){
+
+    answered = false;
+
+    const current =
+        quizData[currentQuestion];
+
+    questionNumber.textContent =
+        "Question " +
+        (currentQuestion + 1) +
+        " of " +
+        quizData.length;
+
+    question.textContent =
+        current.question;
+
+    answers.innerHTML = "";
+
+    quizMessage.textContent = "";
+
+    nextButton.style.display = "none";
+
+    scoreBox.textContent = "";
+
+    current.answers.forEach(function(answer){
+
+        const button =
+            document.createElement("button");
+
+        button.className =
+            "answer-btn";
+
+        button.textContent =
+            answer;
+
+        button.onclick = function(){
+
+            checkAnswer(button,answer);
+
+        };
+
+        answers.appendChild(button);
+
+    });
+
+}
+
+
+function checkAnswer(button,selectedAnswer){
+
+    if(answered){
+        return;
+    }
+
+    answered = true;
+
+    const correctAnswer =
+        quizData[currentQuestion].correct;
+
+    const allButtons =
+        document.querySelectorAll(".answer-btn");
+
+    allButtons.forEach(function(btn){
+
+        if(btn.textContent === correctAnswer){
+
+            btn.classList.add("correct");
+
+        }
+
+    });
+
+    if(selectedAnswer === correctAnswer){
+
+        score++;
+
+        button.classList.add("correct");
+
+        quizMessage.textContent =
+            "✅ Correct! Well done!";
+
+        quizMessage.style.color =
+            "#16a34a";
+
+    }else{
+
+        button.classList.add("wrong");
+
+        quizMessage.textContent =
+            "❌ Wrong answer. Correct answer: " +
+            correctAnswer;
+
+        quizMessage.style.color =
+            "#dc2626";
+
+    }
+
+    if(currentQuestion < quizData.length - 1){
+
+        nextButton.style.display =
+            "inline-block";
+
+    }else{
+
+        showFinalScore();
+
+    }
+
+}
+
+
+function nextQuestion(){
+
+    currentQuestion++;
+
+    loadQuestion();
+
+}
+
+
+function showFinalScore(){
+
+    questionNumber.textContent =
+        "🎉 Quiz Complete!";
+
+    scoreBox.textContent =
+        "Your Score: " +
+        score +
+        " / " +
+        quizData.length;
+
+    restartButton.style.display =
+        "inline-block";
+
+    nextButton.style.display =
+        "none";
+
+}
+
+
+function restartQuiz(){
+
+    currentQuestion = 0;
+
+    score = 0;
+
+    restartButton.style.display =
+        "none";
+
+    loadQuestion();
+
+}
+
+
+loadQuestion();
+
+</script>
+
 </body>
 </html>
