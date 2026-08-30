@@ -1,1 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SpeakWorld - Learn Arabic</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
+body{font-family:Arial,sans-serif;color:#172554;background:#f8fafc;line-height:1.6}
+nav{height:75px;background:white;display:flex;align-items:center;justify-content:space-between;padding:0 6%;position:sticky;top:0;z-index:1000;box-shadow:0 2px 15px rgba(0,0,0,.08)}
+.logo{font-size:26px;font-weight:bold;color:#0f4c81}.logo span{color:#fbbf24}
+.nav-links{display:flex;gap:30px;list-style:none}.nav-links a{text-decoration:none;color:#172554;font-weight:500}.nav-btn{background:#fbbf24;padding:10px 22px;border-radius:25px;font-weight:bold!important}
+.hero{padding:80px 7%;text-align:center;color:white;background:linear-gradient(120deg,#062c75,#0757b8,#7e22ce)}
+.hero h1{font-size:55px;margin-bottom:15px}.hero h1 span{color:#facc15}.hero p{font-size:20px;color:#e0f2fe}
+section{padding:60px 7%}.section-title{text-align:center;font-size:36px;margin-bottom:35px}.section-title:after{content:"";display:block;width:55px;height:4px;background:#facc15;margin:10px auto;border-radius:5px}
+.lesson-grid{max-width:1000px;margin:auto;display:grid;grid-template-columns:repeat(2,1fr);gap:20px}.lesson{background:white;padding:25px;border-radius:18px;box-shadow:0 5px 20px rgba(0,0,0,.08)}.lesson h3{color:#2563eb;margin-bottom:12px;font-size:22px}
+.phrase{display:flex;justify-content:space-between;gap:15px;border-bottom:1px solid #e2e8f0;padding:12px 0}.phrase:last-child{border-bottom:0}.arabic{font-size:21px;font-weight:bold;color:#7c3aed}
+.back{display:inline-block;margin-top:30px;background:#2563eb;color:white;text-decoration:none;padding:12px 25px;border-radius:25px}
+footer{background:#061633;color:white;text-align:center;padding:35px 20px}footer p{color:#cbd5e1;margin:8px}
+@media(max-width:700px){.nav-links{display:none}.hero h1{font-size:40px}.lesson-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
 
+<nav>
+<div class="logo">🌐 Speak<span>World</span></div>
+<ul class="nav-links">
+<li><a href="index.html">Home</a></li>
+<li><a href="index.html#about">About</a></li>
+<li><a href="index.html#languages">Languages</a></li>
+<li><a href="index.html#learn">How to Learn</a></li>
+<li><a class="nav-btn" href="index.html#languages">All Languages</a></li>
+</ul>
+</nav>
+
+<section class="hero">
+<h1>🇸🇦 Learn <span>Arabic</span></h1>
+<p>Learn useful Arabic words and everyday sentences.</p>
+</section>
+
+<section>
+<h2 class="section-title">Basic Arabic Phrases</h2>
+<div class="lesson-grid">
+
+<div class="lesson">
+<h3>👋 Greetings</h3>
+<div class="phrase"><span>Hello</span><span class="arabic">مرحبا</span></div>
+<div class="phrase"><span>Good morning</span><span class="arabic">صباح الخير</span></div>
+<div class="phrase"><span>Good evening</span><span class="arabic">مساء الخير</span></div>
+<div class="phrase"><span>How are you?</span><span class="arabic">كيف حالك؟</span></div>
+<div class="phrase"><span>Goodbye</span><span class="arabic">مع السلامة</span></div>
+</div>
+
+<div class="lesson">
+<h3>💬 Daily Words</h3>
+<div class="phrase"><span>Thank you</span><span class="arabic">شكرا</span></div>
+<div class="phrase"><span>Please</span><span class="arabic">من فضلك</span></div>
+<div class="phrase"><span>Yes</span><span class="arabic">نعم</span></div>
+<div class="phrase"><span>No</span><span class="arabic">لا</span></div>
+<div class="phrase"><span>Sorry</span><span class="arabic">آسف</span></div>
+</div>
+
+<div class="lesson">
+<h3>🏠 Useful Sentences</h3>
+<div class="phrase"><span>My name is Junaid.</span><span class="arabic">اسمي جنيد</span></div>
+<div class="phrase"><span>Where are you from?</span><span class="arabic">من أين أنت؟</span></div>
+<div class="phrase"><span>I am learning Arabic.</span><span class="arabic">أنا أتعلم العربية</span></div>
+<div class="phrase"><span>Nice to meet you.</span><span class="arabic">تشرفت بلقائك</span></div>
+</div>
+
+<div class="lesson">
+<h3>📚 Numbers</h3>
+<div class="phrase"><span>One</span><span class="arabic">واحد</span></div>
+<div class="phrase"><span>Two</span><span class="arabic">اثنان</span></div>
+<div class="phrase"><span>Three</span><span class="arabic">ثلاثة</span></div>
+<div class="phrase"><span>Four</span><span class="arabic">أربعة</span></div>
+<div class="phrase"><span>Five</span><span class="arabic">خمسة</span></div>
+</div>
+
+</div>
+<center><a class="back" href="index.html#languages">← Back to Languages</a></center>
+</section>
+
+<footer>
+<h3>🌐 Speak<span style="color:#facc15">World</span></h3>
+<p>Learn • Practice • Speak • Connect 🌍</p>
+<p>© 2026 SpeakWorld. All Rights Reserved.</p>
+</footer>
+</body>
+</html>
